@@ -30,14 +30,14 @@ class RawTableHeader extends React.Component {
   render() {
     const header = (
       <tr
-        className={ClassNames('folder', {
+        className={ClassNames('fb-folder-thead', {
           dragover: this.props.isOver,
           selected: this.props.isSelected,
         })}
       >
-        <th>File</th>
-        <th className="size">Size</th>
-        <th className="modified">Last Modified</th>
+        <th>Файлы</th>
+        <th className="size">Размер</th>
+        <th className="modified">Дата изменения</th>
       </tr>
     )
 

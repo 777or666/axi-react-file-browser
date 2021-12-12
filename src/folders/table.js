@@ -8,6 +8,13 @@ import BaseFolder, { BaseFolderConnectors } from './../base-folder.js'
 import { BaseFileConnectors } from './../base-file.js'
 
 class RawTableFolder extends BaseFolder {
+  handleKeyPress = (event) => {
+		if(event.key == 'Enter'){
+			event.preventDefault()
+    		event.stopPropagation()
+			this.handleRenameSubmit(event)	
+		}
+	}
   render() {
     const {
       isOpen, isDragging, isDeleting, isRenaming, isDraft, isOver, isSelected,
@@ -42,6 +49,7 @@ class RawTableFolder extends BaseFolder {
               value={this.state.newName}
               onChange={this.handleNewNameChange}
               onBlur={this.handleCancelEdit}
+              onKeyPress={this.handleKeyPress}
               autoFocus
             />
           </form>
@@ -69,7 +77,7 @@ class RawTableFolder extends BaseFolder {
 
     const folder = (
       <tr
-        className={ClassNames('folder', {
+        className={ClassNames('fb-folder-tbody', {
           pending: action,
           dragging: isDragging,
           dragover: isOver,

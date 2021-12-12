@@ -10,7 +10,8 @@ const ConfirmDeletion = (props) => {
   } = props
 
   return (
-    <form className="deleting" onSubmit={handleDeleteSubmit}>
+    //<form className="deleting" onSubmit={handleDeleteSubmit}>
+    <form className="deleting">
       <a
         href={url}
         download="download"
@@ -19,11 +20,11 @@ const ConfirmDeletion = (props) => {
         {children}
       </a>
       <div>
-        <button type="submit">
-          Confirm Deletion
+        <button type="submit" onClick={handleDeleteSubmit}>
+          Подтвердить удаление
         </button>
       </div>
-    </form>
+	  </form>
   )
 }
 

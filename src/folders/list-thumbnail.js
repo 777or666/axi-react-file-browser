@@ -10,6 +10,13 @@ import { BaseFileConnectors } from './../base-file.js'
 import { isFolder } from '../utils'
 
 class RawListThumbnailFolder extends BaseFolder {
+  handleKeyPress = (event) => {
+		if(event.key == 'Enter'){
+			event.preventDefault()
+    		event.stopPropagation()
+			this.handleRenameSubmit(event)	
+		}
+	}
   render() {
     const {
       isOpen, isDragging, isDeleting, isRenaming, isDraft, isOver, isSelected,
@@ -43,6 +50,7 @@ class RawListThumbnailFolder extends BaseFolder {
               value={this.state.newName}
               onChange={this.handleNewNameChange}
               onBlur={this.handleCancelEdit}
+              onKeyPress={this.handleKeyPress}
               autoFocus
             />
           </form>
@@ -98,7 +106,7 @@ class RawListThumbnailFolder extends BaseFolder {
 
     let folder = (
       <li
-        className={ClassNames('folder', {
+        className={ClassNames('fb-folder-tbody', {
           expanded: isOpen && browserProps.nestChildren,
           pending: action,
           dragging: isDragging,

@@ -5,36 +5,44 @@ import { moveFilesAndFolders } from './utils'
 import { extensionMapping } from './constants.js'
 
 class BaseFile extends React.Component {
-  static propTypes = {
-    fileKey: PropTypes.string,
-    url: PropTypes.string,
+  // static propTypes = {
+  //   fileKey: PropTypes.string,
+  //   url: PropTypes.string,
 
-    newKey: PropTypes.string,
-    isRenaming: PropTypes.bool,
+  //   newKey: PropTypes.string,
+  //   isRenaming: PropTypes.bool,
 
-    connectDragSource: PropTypes.func,
-    connectDropTarget: PropTypes.func,
-    isDragging: PropTypes.bool,
-    action: PropTypes.string,
+  //   connectDragSource: PropTypes.func,
+  //   connectDropTarget: PropTypes.func,
+  //   isDragging: PropTypes.bool,
+  //   action: PropTypes.string,
 
-    browserProps: PropTypes.shape({
-      icons: PropTypes.object,
-      select: PropTypes.func,
-      beginAction: PropTypes.func,
-      endAction: PropTypes.func,
-      preview: PropTypes.func,
+  //   browserProps: PropTypes.shape({
+  //     icons: PropTypes.object,
+  //     select: PropTypes.func,
+  //     beginAction: PropTypes.func,
+  //     endAction: PropTypes.func,
+  //     preview: PropTypes.func,
 
-      createFiles: PropTypes.func,
-      moveFile: PropTypes.func,
-      moveFolder: PropTypes.func,
-      renameFile: PropTypes.func,
-      deleteFile: PropTypes.func,
-    }),
-  }
+  //     createFiles: PropTypes.func,
+  //     moveFile: PropTypes.func,
+  //     moveFolder: PropTypes.func,
+  //     renameFile: PropTypes.func,
+  //     deleteFile: PropTypes.func,
+  //   }),
+  // }
 
-  state = {
-    newName: this.getName(),
-  }
+//   state = {
+//     newName: this.getName(),
+//   }
+
+constructor(props){
+        super(props) 
+
+        this.state = {
+			newName: this.getName(),
+		}
+}
 
   selectFileNameFromRef(element) {
     if (element) {
@@ -134,8 +142,11 @@ class BaseFile extends React.Component {
     if (!this.props.browserProps.deleteFile) {
       return
     }
+    const _actionTargets = Array.isArray(this.props.browserProps.actionTargets) ? 
+                              this.props.browserProps.actionTargets[0] : this.props.browserProps.actionTargets
 
-    this.props.browserProps.deleteFile(this.props.browserProps.actionTargets)
+    this.props.browserProps.deleteFile(_actionTargets)
+    //this.props.browserProps.deleteFile(this.props.browserProps.actionTargets)
   }
 
   handleCancelEdit = (event) => {
@@ -160,6 +171,33 @@ class BaseFile extends React.Component {
     }
     return render
   }
+}
+
+BaseFile.propTypes = {
+	fileKey: PropTypes.string,
+	url: PropTypes.string,
+
+	newKey: PropTypes.string,
+	isRenaming: PropTypes.bool,
+
+	connectDragSource: PropTypes.func,
+	connectDropTarget: PropTypes.func,
+	isDragging: PropTypes.bool,
+	action: PropTypes.string,
+
+	browserProps: PropTypes.shape({
+		icons: PropTypes.object,
+		select: PropTypes.func,
+		beginAction: PropTypes.func,
+		endAction: PropTypes.func,
+		preview: PropTypes.func,
+
+		createFiles: PropTypes.func,
+		moveFile: PropTypes.func,
+		moveFolder: PropTypes.func,
+		renameFile: PropTypes.func,
+		deleteFile: PropTypes.func,
+  }),
 }
 
 const dragSource = {

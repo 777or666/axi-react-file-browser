@@ -1,6 +1,6 @@
 $selection-bar-size: 0.3rem
 
-div.rendered-react-keyed-file-browser
+div.rendered-axi-react-file-browser
   div.files table
     width: 100%
     margin-bottom: 2rem
@@ -18,7 +18,11 @@ div.rendered-react-keyed-file-browser
       margin: 0
       padding: $main-padding
     th
-      font-weight: bold
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 0.75rem;
+      font-weight: 400;
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      line-height: 1.375em;
 
     th, td
       &.size, &.modified
@@ -27,6 +31,12 @@ div.rendered-react-keyed-file-browser
       &.name
         i
           padding-right: $main-padding
+      
+    tr.fb-folder-tbody
+      td.name
+        i
+          padding-right: $main-padding
+          color: goldenrod
 
     thead th
       border-bottom: 0.1rem solid #ddd
@@ -50,7 +60,7 @@ div.rendered-react-keyed-file-browser
         cursor: pointer
       &.selected
         td
-          font-weight: bold
+          background-color: rgba(175,218,252,0.3)
           input, button
             font-weight: normal
           &.name

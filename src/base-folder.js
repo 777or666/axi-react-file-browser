@@ -4,40 +4,49 @@ import React from 'react'
 import { moveFilesAndFolders } from './utils'
 
 class BaseFolder extends React.Component {
-  static propTypes = {
-    name: PropTypes.string,
-    fileKey: PropTypes.string,
+  // static propTypes = {
+  //   name: PropTypes.string,
+  //   fileKey: PropTypes.string,
 
-    newName: PropTypes.string,
-    keyDerived: PropTypes.bool,
-    isDraft: PropTypes.bool,
-    isRenaming: PropTypes.bool,
-    isDeleting: PropTypes.bool,
+  //   newName: PropTypes.string,
+  //   keyDerived: PropTypes.bool,
+  //   isDraft: PropTypes.bool,
+  //   isRenaming: PropTypes.bool,
+  //   isDeleting: PropTypes.bool,
 
-    connectDragSource: PropTypes.func,
-    connectDropTarget: PropTypes.func,
-    isDragging: PropTypes.bool,
-    action: PropTypes.string,
+  //   connectDragSource: PropTypes.func,
+  //   connectDropTarget: PropTypes.func,
+  //   isDragging: PropTypes.bool,
+  //   action: PropTypes.string,
 
-    browserProps: PropTypes.shape({
-      select: PropTypes.func,
-      toggleFolder: PropTypes.func,
-      beginAction: PropTypes.func,
-      endAction: PropTypes.func,
-      preview: PropTypes.func,
+  //   browserProps: PropTypes.shape({
+  //     select: PropTypes.func,
+  //     toggleFolder: PropTypes.func,
+  //     beginAction: PropTypes.func,
+  //     endAction: PropTypes.func,
+  //     preview: PropTypes.func,
 
-      createFiles: PropTypes.func,
-      createFolder: PropTypes.func,
-      moveFile: PropTypes.func,
-      moveFolder: PropTypes.func,
-      renameFolder: PropTypes.func,
-      deleteFolder: PropTypes.func,
-    }),
-  }
+  //     createFiles: PropTypes.func,
+  //     createFolder: PropTypes.func,
+  //     moveFile: PropTypes.func,
+  //     moveFolder: PropTypes.func,
+  //     renameFolder: PropTypes.func,
+  //     deleteFolder: PropTypes.func,
+  //   }),
+  // }
 
-  state = {
-    newName: this.props.isDraft ? 'New folder' : this.getName(),
-  }
+  // state = {
+  //   newName: this.props.isDraft ? 'New folder' : this.getName(),
+  // }
+
+constructor(props){
+        super(props) 
+
+        this.state = {
+			newName: this.props.isDraft ? 'New folder' : this.getName(),
+		}
+}
+
 
   selectFolderNameFromRef(element) {
     if (element) {
@@ -121,10 +130,13 @@ class BaseFolder extends React.Component {
   handleDeleteSubmit = (event) => {
     event.preventDefault()
     event.stopPropagation()
-    if (!this.props.browserProps.deleteFolder) {
+     if (!this.props.browserProps.deleteFolder) {
       return
     }
-    this.props.browserProps.deleteFolder(this.props.browserProps.actionTargets)
+    const _actionTargets = Array.isArray(this.props.browserProps.actionTargets) ? 
+                              this.props.browserProps.actionTargets[0] : this.props.browserProps.actionTargets
+    this.props.browserProps.deleteFolder(_actionTargets)
+    //this.props.browserProps.deleteFolder(this.props.browserProps.actionTargets)
   }
 
   handleCancelEdit = (event) => {
@@ -156,6 +168,37 @@ class BaseFolder extends React.Component {
     }
     return render
   }
+}
+
+BaseFolder.propTypes = {
+    name: PropTypes.string,
+    fileKey: PropTypes.string,
+
+    newName: PropTypes.string,
+    keyDerived: PropTypes.bool,
+    isDraft: PropTypes.bool,
+    isRenaming: PropTypes.bool,
+    isDeleting: PropTypes.bool,
+
+    connectDragSource: PropTypes.func,
+    connectDropTarget: PropTypes.func,
+    isDragging: PropTypes.bool,
+    action: PropTypes.string,
+
+    browserProps: PropTypes.shape({
+      select: PropTypes.func,
+      toggleFolder: PropTypes.func,
+      beginAction: PropTypes.func,
+      endAction: PropTypes.func,
+      preview: PropTypes.func,
+
+      createFiles: PropTypes.func,
+      createFolder: PropTypes.func,
+      moveFile: PropTypes.func,
+      moveFolder: PropTypes.func,
+      renameFolder: PropTypes.func,
+      deleteFolder: PropTypes.func,
+    }),
 }
 
 const dragSource = {

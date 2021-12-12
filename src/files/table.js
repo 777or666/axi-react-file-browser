@@ -2,13 +2,21 @@ import React from 'react'
 import ClassNames from 'classnames'
 import { DragSource, DropTarget } from 'react-dnd'
 import { NativeTypes } from 'react-dnd-html5-backend'
-import { formatDistanceToNow } from 'date-fns'
+import { formatDistanceToNow, formatRelative} from 'date-fns'
+import { es, ru } from 'date-fns/locale'
 import flow from 'lodash/flow'
 
 import BaseFile, { BaseFileConnectors } from './../base-file.js'
 import { fileSize } from './utils.js'
 
 class RawTableFile extends BaseFile {
+  handleKeyPress = (event) => {
+		if(event.key == 'Enter'){
+			event.preventDefault()
+    	event.stopPropagation()
+			this.handleRenameSubmit(event)	
+		}
+	}
   render() {
     const {
       isDragging, isDeleting, isRenaming, isOver, isSelected,
@@ -43,6 +51,7 @@ class RawTableFile extends BaseFile {
             value={this.state.newName}
             onChange={this.handleNewNameChange}
             onBlur={this.handleCancelEdit}
+            onKeyPress={this.handleKeyPress}
             autoFocus
           />
         </form>
@@ -87,7 +96,8 @@ class RawTableFile extends BaseFile {
         </td>
         <td className="size">{fileSize(size)}</td>
         <td className="modified">
-          {typeof modified === 'undefined' ? '-' : formatDistanceToNow(modified, { addSuffix: true })}
+          {typeof modified === 'undefined' ? '-' : formatRelative(modified, new Date(), { locale: ru }) //formatDistanceToNow(modified, { addSuffix: true }, {locale: ru})
+          }
         </td>
       </tr>
     )

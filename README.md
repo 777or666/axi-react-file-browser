@@ -1,33 +1,30 @@
-# react-keyed-file-browser
-
-[![Build Status](https://travis-ci.org/uptick/react-keyed-file-browser.svg?branch=master)](https://travis-ci.org/uptick/react-keyed-file-browser)
-[![npm version](https://badge.fury.io/js/react-keyed-file-browser.svg)](http://badge.fury.io/js/react-keyed-file-browser)
-![Downloads](http://img.shields.io/npm/dm/react-keyed-file-browser.svg?style=flat)
+# axi-react-file-browser
+forked from uptick/react-keyed-file-browser
+https://github.com/uptick/react-keyed-file-browser
 
 Folder based file browser given a flat keyed list of objects, powered by React.
 
-## Live Demo
-
-Check out the live demo here: http://uptick.github.io/react-keyed-file-browser/
-
 ## Installation
 
-Install the package with npm:
+In developing ...
+
+<!--Install the package with npm:
 
 ```bash
 # NPM
-npm install react-keyed-file-browser
+npm install axi-react-file-browser
 
 # Yarn
-yarn add react-keyed-file-browser
-```
+yarn add axi-react-file-browser
+```-->
 
+## Usage
 
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import FileBrowser from 'react-keyed-file-browser'
+import FileBrowser from 'axi-react-file-browser'
 
 ReactDOM.render(
   <FileBrowser
@@ -43,7 +40,7 @@ Include icons from FontAwesome 4:
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import FileBrowser, { Icons } from 'react-keyed-file-browser'
+import FileBrowser, { Icons } from 'axi-react-file-browser'
 
 // this imports the FontAwesome Icon Styles
 import 'font-awesome/css/font-awesome.min.css'
@@ -78,13 +75,13 @@ or your own icons by specifying as so:
 Optionally, include the built css with an import:
 
 ```scss
-@import 'node_modules/react-keyed-file-browser/dist/react-keyed-file-browser.css';
+@import 'node_modules/axi-react-file-browser/dist/axi-react-file-browser.css';
 ```
 or tag:
 
 ```html
 <link
-  href="static/node_modules/react-keyed-file-browser/dist/react-keyed-file-browser.css"
+  href="static/node_modules/axi-react-file-browser/dist/axi-react-file-browser.css"
   rel="stylesheet"
 >
 ```
@@ -92,7 +89,7 @@ or tag:
 
 Using a custom drag and drop provider.
 ```javascript
-import { RawFileBrowser } from 'react-keyed-file-browser'
+import { RawFileBrowser } from 'axi-react-file-browser'
 
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -101,7 +98,3 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
   <RawFileBrowser files={[]}/>
 </DndProvider>
 ```
-
-
-Full reference documentation coming soon. For now, take a look at the reference implementation with
-event handlers on the live demo at http://uptick.github.io/react-keyed-file-browser/.
