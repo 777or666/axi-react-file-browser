@@ -3,23 +3,20 @@ import React, { Component } from 'react'
 // drag and drop
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-
 // default components (most overridable)
 import { DefaultDetail } from './details'
 import { DefaultFilter } from './filters'
-
 // default renderers
 import { TableHeader } from './headers'
 import { TableFile } from './files'
 import { TableFolder } from './folders'
 import { DefaultConfirmDeletion, MultipleConfirmDeletion } from './confirmations'
-
 // default processors
 import { GroupByFolder } from './groupers'
 import { SortByName } from './sorters'
-
 import { isFolder } from './utils'
 import { DefaultAction } from './actions'
+import i18n from "i18next"
 
 const SEARCH_RESULTS_PER_PAGE = 20
 const regexForNewFolderOrFileSelection = /.*\/__new__[/]?$/gm
@@ -37,135 +34,6 @@ function getItemProps(file, browserProps) {
 }
 
 class RawFileBrowser extends React.Component {
-  // static propTypes = {
-  //   files: PropTypes.arrayOf(PropTypes.shape({
-  //     key: PropTypes.string.isRequired,
-  //     modified: PropTypes.number,
-  //     size: PropTypes.number,
-  //   })).isRequired,
-  //   actions: PropTypes.node,
-  //   showActionBar: PropTypes.bool.isRequired,
-  //   canFilter: PropTypes.bool.isRequired,
-  //   showFoldersOnFilter: PropTypes.bool,
-  //   noFilesMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  //   noMatchingFilesMessage: PropTypes.func,
-  //   showMoreResults: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-
-  //   group: PropTypes.func.isRequired,
-  //   sort: PropTypes.func.isRequired,
-
-  //   icons: PropTypes.shape({
-  //     Folder: PropTypes.element,
-  //     FolderOpen: PropTypes.element,
-  //     File: PropTypes.element,
-  //     PDF: PropTypes.element,
-  //     Image: PropTypes.element,
-  //     Delete: PropTypes.element,
-  //     Rename: PropTypes.element,
-  //     Loading: PropTypes.element,
-  //     Download: PropTypes.element,
-  //   }),
-
-  //   nestChildren: PropTypes.bool.isRequired,
-  //   renderStyle: PropTypes.oneOf([
-  //     'list',
-  //     'table',
-  //   ]).isRequired,
-
-  //   startOpen: PropTypes.bool.isRequired, // TODO: remove?
-
-  //   headerRenderer: PropTypes.func,
-  //   headerRendererProps: PropTypes.object,
-  //   filterRenderer: PropTypes.func,
-  //   filterRendererProps: PropTypes.object,
-  //   fileRenderer: PropTypes.func,
-  //   fileRendererProps: PropTypes.object,
-  //   folderRenderer: PropTypes.func,
-  //   folderRendererProps: PropTypes.object,
-  //   detailRenderer: PropTypes.func,
-  //   detailRendererProps: PropTypes.object,
-  //   actionRenderer: PropTypes.func,
-  //   confirmDeletionRenderer: PropTypes.func,
-  //   confirmMultipleDeletionRenderer: PropTypes.func,
-
-  //   onCreateFiles: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onCreateFolder: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onMoveFile: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onMoveFolder: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onRenameFile: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onRenameFolder: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onDeleteFile: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onDeleteFolder: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onDownloadFile: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  //   onDownloadFolder: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-
-  //   onSelect: PropTypes.func,
-  //   onSelectFile: PropTypes.func,
-  //   onSelectFolder: PropTypes.func,
-
-  //   onPreviewOpen: PropTypes.func,
-  //   onPreviewClose: PropTypes.func,
-
-  //   onFolderOpen: PropTypes.func,
-  //   onFolderClose: PropTypes.func,
-  // }
-
-  // static defaultProps = {
-  //   showActionBar: true,
-  //   canFilter: true,
-  //   showFoldersOnFilter: false,
-  //   noFilesMessage: 'No files.',
-  //   noMatchingFilesMessage: (filter) => `No files matching "${filter}".`,
-  //   showMoreResults: 'Show more results',
-
-  //   group: GroupByFolder,
-  //   sort: SortByName,
-
-  //   nestChildren: false,
-  //   renderStyle: 'table',
-
-  //   startOpen: false,
-
-  //   headerRenderer: TableHeader,
-  //   headerRendererProps: {},
-  //   filterRenderer: DefaultFilter,
-  //   filterRendererProps: {},
-  //   fileRenderer: TableFile,
-  //   fileRendererProps: {},
-  //   folderRenderer: TableFolder,
-  //   folderRendererProps: {},
-  //   detailRenderer: DefaultDetail,
-  //   detailRendererProps: {},
-  //   actionRenderer: DefaultAction,
-  //   confirmDeletionRenderer: DefaultConfirmDeletion,
-  //   confirmMultipleDeletionRenderer: MultipleConfirmDeletion,
-
-  //   icons: {},
-
-  //   onSelect: (fileOrFolder) => { }, // Always called when a file or folder is selected
-  //   onSelectFile: (file) => { }, //    Called after onSelect, only on file selection
-  //   onSelectFolder: (folder) => { }, //    Called after onSelect, only on folder selection
-
-  //   onPreviewOpen: (file) => { }, // File opened
-  //   onPreviewClose: (file) => { }, // File closed
-
-  //   onFolderOpen: (folder) => { }, // Folder opened
-  //   onFolderClose: (folder) => { }, // Folder closed
-  // }
-
-  // state = {
-  //   openFolders: {},
-  //   selection: [],
-  //   activeAction: null,
-  //   actionTargets: [],
-
-  //   nameFilter: '',
-  //   searchResultsShown: SEARCH_RESULTS_PER_PAGE,
-
-  //   previewFile: null,
-
-  //   addFolder: null,
-  // }
 
   constructor(props){
         super(props) 
@@ -524,6 +392,7 @@ class RawFileBrowser extends React.Component {
       confirmDeletionRenderer: this.props.confirmDeletionRenderer,
       confirmMultipleDeletionRenderer: this.props.confirmMultipleDeletionRenderer,
       icons: this.props.icons,
+      lang: this.props.lang,
 
       // browser state
       openFolders: this.state.openFolders,
@@ -734,6 +603,9 @@ class RawFileBrowser extends React.Component {
     const files = this.getFiles()
     const selectedItems = this.getSelectedItems(files)
 
+    if(browserProps.lang !== 'auto'){
+      i18n.changeLanguage(browserProps.lang)
+    }
     let header
     /** @type any */
     let contents = this.renderFiles(files, 0)
@@ -904,6 +776,8 @@ RawFileBrowser.propTypes = {
       Download: PropTypes.element,
     }),
 
+    lang: PropTypes.oneOf(['ru', 'en', 'auto']),
+
     nestChildren: PropTypes.bool.isRequired,
     renderStyle: PropTypes.oneOf([
       'list',
@@ -959,6 +833,8 @@ RawFileBrowser.defaultProps = {
     group: GroupByFolder,
     sort: SortByName,
 
+    lang: 'ru',
+
     nestChildren: false,
     renderStyle: 'table',
 
@@ -995,8 +871,7 @@ class FileBrowser extends Component {
     const el = document.getElementById('fb-dnd-rootElement')
     return (
       <DndProvider backend={HTML5Backend} options={{ rootElement: el }}>
-      {/* </DndProvider><DndProvider backend={HTML5Backend}> */}
-        <RawFileBrowser {...this.props} />
+          <RawFileBrowser {...this.props} />
       </DndProvider>
     )
   }

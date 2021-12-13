@@ -35,10 +35,13 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "date-fns": "^2.22.1",
+    "i18next": "^21.6.0",
+    "i18next-browser-languagedetector": "^6.1.2",
     "lodash.flow": "^3.5.0",
     "prop-types": "^15.7.2",
     "react-dnd": "^14.0.2",
-    "react-dnd-html5-backend": "^14.0"
+    "react-dnd-html5-backend": "^14.0",
+    "react-i18next": "^11.15.0"
   },
   "peerDependencies": {
     "react": "0.14.x || 15.x || 16.x || 17.x"

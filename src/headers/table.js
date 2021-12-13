@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import ClassNames from 'classnames'
-
 import { DropTarget } from 'react-dnd'
 import { NativeTypes } from 'react-dnd-html5-backend'
-
 import { BaseFileConnectors } from './../base-file.js'
+import { withTranslation } from 'react-i18next'
+import "../translations/i18n"
 
 class RawTableHeader extends React.Component {
   static propTypes = {
@@ -28,17 +28,18 @@ class RawTableHeader extends React.Component {
   }
 
   render() {
-    const header = (
-      <tr
-        className={ClassNames('fb-folder-thead', {
-          dragover: this.props.isOver,
-          selected: this.props.isSelected,
-        })}
-      >
-        <th>Файлы</th>
-        <th className="size">Размер</th>
-        <th className="modified">Дата изменения</th>
-      </tr>
+	  	const {t} = this.props
+    	const header = (
+		<tr
+				className={ClassNames('fb-folder-thead', {
+				dragover: this.props.isOver,
+				selected: this.props.isSelected,
+				})}
+			>
+			<th>{t('headers.files')}</th>
+			<th className="size">{t('headers.size')}</th>
+			<th className="modified">{t('headers.modified')}</th>
+		</tr>  		
     )
 
     if (
@@ -59,5 +60,7 @@ const TableHeader = DropTarget(
   BaseFileConnectors.targetCollect
 )(RawTableHeader)
 
-export default TableHeader
+export default withTranslation()(TableHeader)
+//export default TableHeader
+
 export { RawTableHeader }
