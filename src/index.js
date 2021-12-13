@@ -12,6 +12,7 @@ import * as Groupers from './groupers'
 import * as Sorters from './sorters'
 import * as Icons from './icons'
 import * as Utils from './utils'
+import 'font-awesome/css/font-awesome.min.css'
 
 export default FileBrowser
 export {
