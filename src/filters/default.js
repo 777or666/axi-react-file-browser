@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-
+import { t } from 'i18next'
 class Filter extends React.Component {
   static propTypes = {
     value: PropTypes.string.isRequired,
@@ -13,10 +13,11 @@ class Filter extends React.Component {
   }
 
   render() {
+    //const {t} = this.props
     return (
       <input
         type="search"
-        placeholder="Фильтр файлов"
+        placeholder={t('filter.filter')}
         value={this.props.value}
         onChange={this.handleFilterChange}
       />
@@ -24,4 +25,5 @@ class Filter extends React.Component {
   }
 }
 
+//export default withTranslation()(Filter)
 export default Filter

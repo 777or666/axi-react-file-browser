@@ -4,8 +4,8 @@ import ClassNames from 'classnames'
 import { DropTarget } from 'react-dnd'
 import { NativeTypes } from 'react-dnd-html5-backend'
 import { BaseFileConnectors } from './../base-file.js'
-import { withTranslation } from 'react-i18next'
 import "../translations/i18n"
+import {t} from 'i18next'
 
 class RawTableHeader extends React.Component {
   static propTypes = {
@@ -28,7 +28,6 @@ class RawTableHeader extends React.Component {
   }
 
   render() {
-	  	const {t} = this.props
     	const header = (
 		<tr
 				className={ClassNames('fb-folder-thead', {
@@ -36,9 +35,9 @@ class RawTableHeader extends React.Component {
 				selected: this.props.isSelected,
 				})}
 			>
-			<th>{t('headers.files')}</th>
-			<th className="size">{t('headers.size')}</th>
-			<th className="modified">{t('headers.modified')}</th>
+			<th>{t('header.files')}</th>
+			<th className="size">{t('header.size')}</th>
+			<th className="modified">{t('header.modified')}</th>
 		</tr>  		
     )
 
@@ -60,7 +59,6 @@ const TableHeader = DropTarget(
   BaseFileConnectors.targetCollect
 )(RawTableHeader)
 
-export default withTranslation()(TableHeader)
-//export default TableHeader
+export default TableHeader
 
 export { RawTableHeader }

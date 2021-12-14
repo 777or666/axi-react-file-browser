@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { t } from 'i18next'
 
 const Actions = (props) => {
   const {
@@ -42,15 +43,15 @@ const Actions = (props) => {
       let actionText
       switch (selectedItemsAction[0].action) {
         case 'delete':
-          actionText = 'Удаление ...'
+          actionText = t('action.deltext')
           break
 
         case 'rename':
-          actionText = 'Переименование ...'
+          actionText = t('action.renametext')
           break
 
         default:
-          actionText = 'Перенос ...'
+          actionText = t('action.movetext')
           break
       }
 
@@ -70,7 +71,7 @@ const Actions = (props) => {
               role="button"
             >
               {icons.Folder}
-              &nbsp;Новая подпапка
+              &nbsp;{t('action.newsubfolder')}
             </a>
           </li>
         )
@@ -86,7 +87,7 @@ const Actions = (props) => {
               role="button"
             >
               {icons.Rename}
-              &nbsp;Переименовать
+              &nbsp;{t('action.rename')}
             </a>
           </li>
         )
@@ -99,7 +100,7 @@ const Actions = (props) => {
               role="button"
             >
               {icons.Rename}
-              &nbsp;Переименовать
+              &nbsp;{t('action.rename')}
             </a>
           </li>
         )
@@ -114,7 +115,7 @@ const Actions = (props) => {
               role="button"
             >
               {icons.Delete}
-              &nbsp;Удалить
+              &nbsp;{t('action.delete')}
             </a>
           </li>
         )
@@ -127,7 +128,7 @@ const Actions = (props) => {
               role="button"
             >
               {icons.Delete}
-              &nbsp;Удалить
+              &nbsp;{t('action.delete')}
             </a>
           </li>
         )
@@ -142,7 +143,7 @@ const Actions = (props) => {
               role="button"
             >
               {icons.Download}
-              &nbsp;Загрузить
+              &nbsp;{t('action.download')}
             </a>
           </li>
         )
@@ -165,7 +166,7 @@ const Actions = (props) => {
             role="button"
           >
             {icons.Folder}
-            &nbsp;Новая папка
+            &nbsp;{t('action.newfolder')}
           </a>
         </li>
       )

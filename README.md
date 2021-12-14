@@ -50,6 +50,7 @@ ReactDOM.render(
   <FileBrowser
     files={[]}
     icons={Icons.FontAwesome(4)}
+    lang='auto'
   />,
   mount[0]
 );
@@ -71,6 +72,8 @@ or your own icons by specifying as so:
     }}
   />
 ```
+
+Supported localization language types: 'ru', 'en', 'auto'
 
 Optionally, include the built css with an import:
 

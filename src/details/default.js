@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { t } from 'i18next'
 
 class Detail extends React.Component {
   static propTypes = {
@@ -25,15 +26,14 @@ class Detail extends React.Component {
 
     return (
       <div>
-        <h2>Item Detail</h2>
+        <h3>{t('detail.header')}</h3>
         <dl>
-          <dt>Key</dt>
+          <dt>{t('detail.key')}</dt>
           <dd>{this.props.file.key}</dd>
-
-          <dt>Name</dt>
+          <dt>{t('detail.name')}</dt>
           <dd>{name}</dd>
         </dl>
-        <a href="#" onClick={this.handleCloseClick}>Close</a>
+        <a href="#" onClick={this.handleCloseClick}>{t('detail.close')}</a>
       </div>
     )
   }

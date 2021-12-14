@@ -17,6 +17,7 @@ import { SortByName } from './sorters'
 import { isFolder } from './utils'
 import { DefaultAction } from './actions'
 import i18n from "i18next"
+import { Translation } from 'react-i18next'
 
 const SEARCH_RESULTS_PER_PAGE = 20
 const regexForNewFolderOrFileSelection = /.*\/__new__[/]?$/gm
@@ -602,6 +603,7 @@ class RawFileBrowser extends React.Component {
 
     const files = this.getFiles()
     const selectedItems = this.getSelectedItems(files)
+	const {t} = this.props
 
     if(browserProps.lang !== 'auto'){
       i18n.changeLanguage(browserProps.lang)
@@ -616,7 +618,7 @@ class RawFileBrowser extends React.Component {
             contents = (
               <tr>
                 <td colSpan={100}>
-                  {this.props.noMatchingFilesMessage(this.state.nameFilter)}
+                  {this.props.noMatchingFilesMessage(t('filter.nomatchfiles'), this.state.nameFilter)}
                 </td>
               </tr>
             )
@@ -624,7 +626,10 @@ class RawFileBrowser extends React.Component {
             contents = (
               <tr>
                 <td colSpan={100}>
-                  {this.props.noFilesMessage}
+                  {
+				  	//this.props.noFilesMessage
+					  t('main.nofiles')
+				  }
                 </td>
               </tr>
             )
@@ -641,7 +646,10 @@ class RawFileBrowser extends React.Component {
                       onClick={this.handleShowMoreClick}
                       href="#"
                     >
-                      {this.props.showMoreResults}
+                      {
+					  	//this.props.showMoreResults
+						  t('filter.showmoreresults')
+					  }
                     </a>
                   </td>
                 </tr>
@@ -674,9 +682,12 @@ class RawFileBrowser extends React.Component {
       case 'list':
         if (!contents.length) {
           if (this.state.nameFilter) {
-            contents = (<p className="empty">{this.props.noMatchingFilesMessage(this.state.nameFilter)}</p>)
+            contents = (<p className="empty">{this.props.noMatchingFilesMessage(t('filter.nomatchfiles'), this.state.nameFilter)}</p>)
           } else {
-            contents = (<p className="empty">{this.props.noFilesMessage}</p>)
+            contents = (<p className="empty">{
+				//this.props.noFilesMessage
+				t('main.nofiles')
+				}</p>)
           }
         } else {
           let more
@@ -689,7 +700,10 @@ class RawFileBrowser extends React.Component {
                   onClick={this.handleShowMoreClick}
                   href="#"
                 >
-                  {this.props.showMoreResults}
+                  {
+				  		//this.props.showMoreResults
+						t('filter.showmoreresults')
+				  }
                 </a>
               )
             }
@@ -759,7 +773,7 @@ RawFileBrowser.propTypes = {
     showFoldersOnFilter: PropTypes.bool,
     noFilesMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     noMatchingFilesMessage: PropTypes.func,
-    showMoreResults: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    //showMoreResults: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
     group: PropTypes.func.isRequired,
     sort: PropTypes.func.isRequired,
@@ -827,8 +841,8 @@ RawFileBrowser.defaultProps = {
     canFilter: true,
     showFoldersOnFilter: false,
     noFilesMessage: 'Нет файлов',
-    noMatchingFilesMessage: (filter) => `Нет подходящих файлов "${filter}".`,
-    showMoreResults: 'Показать больше результатов',
+    noMatchingFilesMessage: (str, filter) => `${str} "${filter}".`,
+    //showMoreResults: 'Показать больше результатов',
 
     group: GroupByFolder,
     sort: SortByName,
@@ -870,9 +884,11 @@ class FileBrowser extends Component {
   render() {
     const el = document.getElementById('fb-dnd-rootElement')
     return (
-      <DndProvider backend={HTML5Backend} options={{ rootElement: el }}>
-          <RawFileBrowser {...this.props} />
-      </DndProvider>
+      	<Translation>{ t =>
+        	<DndProvider backend={HTML5Backend} options={{ rootElement: el }}>
+            	<RawFileBrowser {...this.props} t={t} />
+        	</DndProvider>
+  		}</Translation>
     )
   }
 }
