@@ -8,6 +8,8 @@ class Filter extends React.Component {
   }
 
   handleFilterChange = (event) => {
+    event.preventDefault()
+    event.stopPropagation()
     const newValue = event.target.value
     this.props.updateFilter(newValue)
   }
@@ -20,6 +22,7 @@ class Filter extends React.Component {
         placeholder={t('filter.filter')}
         value={this.props.value}
         onChange={this.handleFilterChange}
+        onClick={(event) => {event.stopPropagation()}}
       />
     )
   }

@@ -24,6 +24,8 @@ class RawTableHeader extends React.Component {
   }
 
   handleHeaderClick(event) {
+    event.preventDefault()
+    event.stopPropagation()
     this.props.select(this.props.fileKey)
   }
 

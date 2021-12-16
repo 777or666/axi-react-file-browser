@@ -1,0 +1,9 @@
+AXI-REACT-FILE-BROWSER
+forked from uptick/react-keyed-file-browser
+Copyright 2021-2022 AXIT
+http://www.axit.ru
+-----------------------------------------------------
+Файл-менеджер для React
+-----------------------------------------------------
+v0.0.1
+    - первая версия после форка uptick/react-keyed-file-browser

@@ -30,5 +30,8 @@ export const TRANSLATIONS_RU = {
         created: 'Загружен',
         createdby: 'Загрузил',
         close: 'Закрыть'
+    },
+    confirm: {
+        delete: 'Подтвердить удаление'
     }
 }

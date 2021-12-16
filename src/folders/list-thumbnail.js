@@ -12,8 +12,8 @@ import { isFolder } from '../utils'
 class RawListThumbnailFolder extends BaseFolder {
   handleKeyPress = (event) => {
 		if(event.key == 'Enter'){
-			event.preventDefault()
-    		event.stopPropagation()
+			event && event.preventDefault()
+    		event && event.stopPropagation()
 			this.handleRenameSubmit(event)	
 		}
 	}

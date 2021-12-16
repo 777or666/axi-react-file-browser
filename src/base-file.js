@@ -72,6 +72,7 @@ constructor(props){
 
   handleFileClick = (event) => {
     event && event.preventDefault()
+    event && event.stopPropagation()
     this.props.browserProps.preview({
       url: this.props.url,
       name: this.getName(),
@@ -89,18 +90,21 @@ constructor(props){
   }
 
   handleRenameClick = (event) => {
+    event.stopPropagation()
     if (!this.props.browserProps.renameFile) {
       return
     }
     this.props.browserProps.beginAction('rename', this.props.fileKey)
   }
   handleNewNameChange = (event) => {
+    event.stopPropagation()
     const newName = event.target.value
     this.setState({ newName: newName })
   }
   handleRenameSubmit = (event) => {
     if (event) {
       event.preventDefault()
+      event.stopPropagation()
     }
     if (!this.props.browserProps.renameFile) {
       return
@@ -132,13 +136,15 @@ constructor(props){
   }
 
   handleDeleteClick = (event) => {
+    event.stopPropagation()
     if (!this.props.browserProps.deleteFile) {
       return
     }
     this.props.browserProps.beginAction('delete', this.props.fileKey)
   }
   handleDeleteSubmit = (event) => {
-    event.preventDefault()
+    event && event.preventDefault()
+    event && event.stopPropagation()
     if (!this.props.browserProps.deleteFile) {
       return
     }
@@ -150,6 +156,8 @@ constructor(props){
   }
 
   handleCancelEdit = (event) => {
+	event && event.preventDefault()
+	event && event.stopPropagation()
     this.props.browserProps.endAction()
   }
 

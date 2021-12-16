@@ -41,12 +41,14 @@ class BaseFolder extends React.Component {
 	}
 
 	handleRenameClick = (event) => {
+    	event.stopPropagation()
 		if (!this.props.browserProps.renameFolder) {
 		return
 		}
 		this.props.browserProps.beginAction('rename', this.props.fileKey)
 	}
 	handleNewNameChange = (event) => {
+    	event.stopPropagation()
 		const newName = event.target.value
 		this.setState({ newName: newName })
 	}
@@ -95,8 +97,8 @@ class BaseFolder extends React.Component {
 		this.props.browserProps.beginAction('delete', this.props.fileKey)
 	}
 	handleDeleteSubmit = (event) => {
-		event.preventDefault()
-		event.stopPropagation()
+		event && event.preventDefault()
+		event && event.stopPropagation()
 		if (!this.props.browserProps.deleteFolder) {
 		return
 		}
@@ -107,6 +109,8 @@ class BaseFolder extends React.Component {
 	}
 
 	handleCancelEdit = (event) => {
+		event && event.preventDefault()
+    	event && event.stopPropagation()
 		this.props.browserProps.endAction()
 	}
 

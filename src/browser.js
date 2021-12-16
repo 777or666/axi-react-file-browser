@@ -36,7 +36,7 @@ function getItemProps(file, browserProps) {
 
 class RawFileBrowser extends React.Component {
 
-  constructor(props){
+  	constructor(props){
         super(props) 
 
         this.state = {
@@ -44,15 +44,12 @@ class RawFileBrowser extends React.Component {
 			selection: [],
 			activeAction: null,
 			actionTargets: [],
-
 			nameFilter: '',
 			searchResultsShown: SEARCH_RESULTS_PER_PAGE,
-
 			previewFile: null,
-
 			addFolder: null,
 		}
-}
+	}
 
   componentDidMount() {
     if (this.props.renderStyle === 'table' && this.props.nestChildren) {
@@ -277,6 +274,7 @@ class RawFileBrowser extends React.Component {
 
   handleShowMoreClick = (event) => {
     event.preventDefault()
+    event.stopPropagation()
     this.setState(prevState => ({
       searchResultsShown: prevState.searchResultsShown + SEARCH_RESULTS_PER_PAGE,
     }))
@@ -313,6 +311,8 @@ class RawFileBrowser extends React.Component {
 
   // event handlers
   handleGlobalClick = (event) => {
+    event && event.stopPropagation()
+
     const inBrowser = !!(this.browserRef && this.browserRef.contains(event.target))
 
     if (!inBrowser) {
@@ -325,14 +325,17 @@ class RawFileBrowser extends React.Component {
   }
   handleActionBarRenameClick = (event) => {
     event.preventDefault()
+    event.stopPropagation()
     this.beginAction('rename', this.state.selection)
   }
   handleActionBarDeleteClick = (event) => {
     event.preventDefault()
+    event.stopPropagation()
     this.beginAction('delete', this.state.selection)
   }
   handleActionBarAddFolderClick = (event) => {
     event.preventDefault()
+    event.stopPropagation()
     if (this.state.activeAction === 'createFolder') {
       return
     }
@@ -362,6 +365,7 @@ class RawFileBrowser extends React.Component {
   }
   handleActionBarDownloadClick = (event) => {
     event.preventDefault()
+    event.stopPropagation()
 
     const files = this.getFiles()
     const selectedItems = this.getSelectedItems(files)
@@ -737,15 +741,31 @@ class RawFileBrowser extends React.Component {
     const ConfirmMultipleDeletionRenderer = this.props.confirmMultipleDeletionRenderer
 
     return (
-      <div id={'fb-dnd-rootElement'} className="rendered-axi-react-file-browser">
+      <div id={'fb-dnd-rootElement'} className="rendered-axi-react-file-browser" 
+	  			onClick={(event) => {
+					  event.stopPropagation()
+						this.setState({
+							selection: [],
+							actionTargets: [],
+							activeAction: null,
+						})
+					  }}>
         {this.props.actions}
-        <div className="rendered-file-browser" ref={el => { this.browserRef = el }}>
+        <div className="rendered-file-browser" ref={el => { this.browserRef = el }} 
+				onClick={(event) => {
+					event.stopPropagation()
+						this.setState({
+							selection: [],
+							actionTargets: [],
+							activeAction: null,
+						})
+					}}>
           {this.props.showActionBar && this.renderActionBar(selectedItems)}
           {this.state.activeAction === 'delete' && this.state.selection.length > 1 &&
             <ConfirmMultipleDeletionRenderer
               handleDeleteSubmit={this.handleMultipleDeleteSubmit}
             />}
-          <div className="files" >
+          <div className="files" onClick={(event) => {event.stopPropagation()}}>
             {renderedFiles}
           </div>
         </div>

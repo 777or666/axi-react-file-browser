@@ -16,6 +16,7 @@ class Detail extends React.Component {
   handleCloseClick = (event) => {
     if (event) {
       event.preventDefault()
+      event.stopPropagation()
     }
     this.props.close()
   }
@@ -25,7 +26,7 @@ class Detail extends React.Component {
     name = name.length ? name[name.length - 1] : ''
 
     return (
-      <div>
+      <div onClick={(event) => {event.stopPropagation()}}>
         <h3>{t('detail.header')}</h3>
         <dl>
           <dt>{t('detail.key')}</dt>

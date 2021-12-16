@@ -34,6 +34,8 @@ ReactDOM.render(
 );
 ```
 
+Supported localization types: 'ru', 'en', 'auto'
+
 Include icons from FontAwesome 4:
 
 ```javascript
@@ -72,8 +74,6 @@ or your own icons by specifying as so:
     }}
   />
 ```
-
-Supported localization language types: 'ru', 'en', 'auto'
 
 Optionally, include the built css with an import:
 

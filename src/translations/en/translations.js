@@ -30,5 +30,8 @@ export const TRANSLATIONS_EN = {
         created: 'Loaded',
         createdby: 'Loaded by',
         close: 'Close'
+    },
+    confirm: {
+        delete: 'Confirm Deletion'
     }
 }

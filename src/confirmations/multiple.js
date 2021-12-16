@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { t } from 'i18next'
 
 const MultipleConfirmDeletion = (props) => {
   const {
@@ -8,7 +9,7 @@ const MultipleConfirmDeletion = (props) => {
 
   return (
     <button className="deleting" onClick={handleDeleteSubmit}>
-      Подтвердить удаление 
+		{t('confirm.delete')}
     </button>
   )
 }
