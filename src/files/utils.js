@@ -16,7 +16,7 @@ function fileSize(size) {
     }
     return `${Math.round(kbSize)} kB`
   }
-  return `${size} B`
+  return size ? `${size} B` : '--'
 }
 
 export { floatPrecision, fileSize }

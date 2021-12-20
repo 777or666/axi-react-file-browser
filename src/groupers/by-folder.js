@@ -6,7 +6,10 @@ export default function(files, root) {
     children: {},
   }
 
+  if(!files) return []
+
   files.map((file) => {
+    if(!file) return
     file.relativeKey = (file.newKey || file.key).substr(root.length)
     let currentFolder = fileTree
     const folders = file.relativeKey.split('/')
