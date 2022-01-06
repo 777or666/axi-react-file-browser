@@ -26,7 +26,7 @@ function moveFilesAndFolders(props, monitor, component) {
 
       const newKey = `${dropResult.path}${folderName}/`
       // abort if the new folder name contains itself
-      if (newKey.substr(0, fileKey.length) === fileKey) return
+      if (newKey.substring(0, fileKey.length) === fileKey) return
 
       if (newKey !== fileKey && props.browserProps.moveFolder) {
         props.browserProps.moveFolder(fileKey, newKey)
