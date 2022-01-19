@@ -1,6 +1,7 @@
 export const TRANSLATIONS_EN = {
     header: {
         files: 'Files',
+        shared: 'Shared',
         size: 'Size',
         modified: 'Modified'
     },
@@ -10,7 +11,9 @@ export const TRANSLATIONS_EN = {
         filter: 'Filter files'
     },
     main: {
-        nofiles: 'No files'
+        nofiles: 'No files',
+        shared: 'Full access',
+        sharedto: 'Limited access'
     },
     action: {
         newfolder: 'New folder',

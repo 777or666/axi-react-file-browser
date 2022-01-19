@@ -8,6 +8,7 @@ import flow from 'lodash/flow'
 
 import BaseFile, { BaseFileConnectors } from './../base-file.js'
 import { fileSize } from './utils.js'
+import { t } from 'i18next'
 
 class RawTableFile extends BaseFile {
   handleKeyPress = (event) => {
@@ -21,12 +22,11 @@ class RawTableFile extends BaseFile {
     const {
       isDragging, isDeleting, isRenaming, isOver, isSelected,
       action, url, browserProps, connectDragPreview,
-      depth, size, modified,
+      depth, size, modified, isShared,
     } = this.props
-
     const icon = browserProps.icons[this.getFileType()] || browserProps.icons.File
     const inAction = (isDragging || action)
-
+    const iconShared = browserProps.icons[isShared ? 'Shared' : 'SharedTo']
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
 
     let name
@@ -94,6 +94,14 @@ class RawTableFile extends BaseFile {
             {draggable}
           </div>
         </td>
+        <td className='shared'>
+			<div>
+			<a onClick={this.handleFileClick} title={isShared ? t('main.shared') : t('main.sharedto')}>
+				{iconShared}
+			</a>
+			</div>
+        </td>
+
         <td className="size">{fileSize(size)}</td>
         <td className="modified">
           {typeof modified === 'undefined' ? '-' : formatRelative(modified, new Date(), { locale: ru }) //formatDistanceToNow(modified, { addSuffix: true }, {locale: ru})

@@ -38,6 +38,7 @@ class RawTableHeader extends React.Component {
 				})}
 			>
 				<th>{t('header.files')}</th>
+				<th>{t('header.shared')}</th>
 				<th className="size">{t('header.size')}</th>
 				<th className="modified">{t('header.modified')}</th>
 			</tr>

@@ -18,24 +18,37 @@ div.rendered-axi-react-file-browser
       margin: 0
       padding: $main-padding
     th
-      color: rgba(0, 0, 0, 0.54);
-      font-size: 0.75rem;
-      font-weight: 400;
-      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-      line-height: 1.375em;
+      color: rgba(0, 0, 0, 0.54)
+      font-size: 0.75rem
+      font-weight: 400
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif
+      line-height: 1.375em
       &.size, &.modified
         text-align: right
 
     td
-      &.size, &.modified
+      &.size
         text-align: right
-        color: rgba(0, 0, 0, 0.74);
-        font-size: 0.85rem;
-        font-weight: 400;
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        line-height: 1.375em;
-
+        color: rgba(0, 0, 0, 0.74)
+        font-size: 0.75rem
+        font-weight: 400
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif
+        line-height: 1.375em
+        min-width: 80px
+        max-width: 80px
+      &.modified
+        text-align: right
+        color: rgba(0, 0, 0, 0.74)
+        font-size: 0.75rem
+        font-weight: 400
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif
+        line-height: 1.375em
+        min-width: 130px
+        max-width: 130px
+      &.shared
+	 	    color: rgba(0, 0, 0, 0.5)
       &.name
+        width: 100%
         i
           padding-right: $main-padding
       

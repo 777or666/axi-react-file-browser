@@ -764,14 +764,25 @@ class RawFileBrowser extends React.Component {
 							actionTargets: [],
 							activeAction: null,
 						})
-					}}>
-					{this.props.showActionBar && this.renderActionBar(selectedItems)}
-					{this.state.activeAction === 'delete' && this.state.selection.length > 1 &&
-						<ConfirmMultipleDeletionRenderer
-							handleDeleteSubmit={this.handleMultipleDeleteSubmit.bind(this)}
-						/>}
-					<div className="files" onClick={(event) => { event.stopPropagation() }}>
-						{renderedFiles}
+				}}>
+					<div className='rendered-file-main'>
+						{this.props.showActionBar && this.renderActionBar(selectedItems)}
+						{this.state.activeAction === 'delete' && this.state.selection.length > 1 &&
+							<ConfirmMultipleDeletionRenderer
+								handleDeleteSubmit={this.handleMultipleDeleteSubmit.bind(this)}
+							/>}
+						<div className="files" onClick={(event) => { event.stopPropagation() }}>
+							{renderedFiles}
+						</div>
+					</div>
+					<div className='rendered-file-details'>
+						{this.state.previewFile !== null && (
+							<this.props.detailRenderer
+								file={this.state.previewFile}
+								close={this.closeDetail}
+								{...this.props.detailRendererProps}
+							/>
+						)}
 					</div>
 				</div>
 				{/* {this.state.previewFile !== null && (

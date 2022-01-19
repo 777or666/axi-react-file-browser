@@ -42,12 +42,21 @@ class BaseFile extends React.Component {
 
 	handleFileClick = (event) => {
 		event && event.preventDefault()
+		//console.log(this.props)
 		//event && event.stopPropagation()
 		this.props.browserProps.preview({
-			url: this.props.url,
+			//id: this.props.id,
+			//url: this.props.url,
+			...this.props,
 			name: this.getName(),
 			key: this.props.fileKey,
 			extension: this.getExtension(),
+			//blobId: this.props.blobId,
+			//data: this.props.data,
+			//createdAt: this.props.createdAt,
+			//updatedAt: this.props.updatedAt,
+			//isShared: this.props.isShared,
+
 		})
 	}
 	handleItemClick = (event) => {
@@ -165,6 +174,7 @@ BaseFile.propTypes = {
 	connectDropTarget: PropTypes.func,
 	isDragging: PropTypes.bool,
 	action: PropTypes.string,
+	isShared: PropTypes.bool,
 
 	browserProps: PropTypes.shape({
 		icons: PropTypes.object,
@@ -179,6 +189,10 @@ BaseFile.propTypes = {
 		renameFile: PropTypes.func,
 		deleteFile: PropTypes.func,
 	}),
+}
+
+BaseFile.defaultProps = {
+	isShared: true
 }
 
 const dragSource = {

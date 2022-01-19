@@ -35,6 +35,19 @@ class BaseFolder extends React.Component {
 		event.stopPropagation()
 		this.props.browserProps.select(this.props.fileKey, 'folder', event.ctrlKey || event.metaKey, event.shiftKey)
 	}
+
+	handleFileClick = (event) => {
+		event && event.preventDefault()
+		//event && event.stopPropagation()
+		this.props.browserProps.preview({
+			...this.props,
+			//url: this.props.url,
+			name: this.getName(),
+			key: this.props.fileKey,
+			extension: 'folder',
+		})
+	}
+
 	handleFolderDoubleClick = (event) => {
 		event.stopPropagation()
 		this.toggleFolder()
@@ -155,6 +168,7 @@ BaseFolder.propTypes = {
     connectDropTarget: PropTypes.func,
     isDragging: PropTypes.bool,
     action: PropTypes.string,
+	isShared: PropTypes.bool,
 
     browserProps: PropTypes.shape({
 		select: PropTypes.func,
@@ -170,6 +184,10 @@ BaseFolder.propTypes = {
 		renameFolder: PropTypes.func,
 		deleteFolder: PropTypes.func,
     }),
+}
+
+BaseFolder.defaultProps = {
+	isShared: true
 }
 
 const dragSource = {

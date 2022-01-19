@@ -1,6 +1,7 @@
 export const TRANSLATIONS_RU = {
     header: {
         files: 'Файлы',
+        shared: 'Доступ',
         size: 'Размер',
         modified: 'Дата изменения'
     },
@@ -10,7 +11,9 @@ export const TRANSLATIONS_RU = {
         filter: 'Фильтр файлов'
     },
     main: {
-        nofiles: 'Нет файлов'
+        nofiles: 'Нет файлов',
+        shared: 'Доступно всем кому доступен объект',
+        sharedto: 'Доступ ограничен'
     },
     action: {
         newfolder: 'Новая папка',
@@ -20,7 +23,7 @@ export const TRANSLATIONS_RU = {
         movetext: 'Перенос ...',
         rename: 'Переименовать',
         delete: 'Удалить',
-        download: 'Загрузить'        
+        download: 'Скачать'        
     },
     detail: {
         header: 'Свойства',

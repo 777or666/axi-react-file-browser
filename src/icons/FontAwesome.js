@@ -47,6 +47,8 @@ const FontAwesomeIcons = (majorVersion = 4) => {
         Delete: <i className="fa fa-trash-o" aria-hidden="true" />,
         Loading: <i className="fa fa-circle-o-notch fa-spin" aria-hidden="true" />,
         Download: <i className="fa fa-download" aria-hidden="true" />,
+        Shared: <i className="fa fa-unlock" aria-hidden="true"></i>,
+        SharedTo: <i class="fa fa-lock" aria-hidden="true"></i>,
       }
     case 5:
       IsFontAwesomeLoaded(5)
@@ -67,6 +69,8 @@ const FontAwesomeIcons = (majorVersion = 4) => {
         Delete: <i className="far fa-trash-alt" aria-hidden="true" />,
         Loading: <i className="fas fa-circle-notch fa-spin" aria-hidden="true" />,
         Download: <i className="fas fa-download" aria-hidden="true" />,
+        Shared: <i className="fas fa-unlock" aria-hidden="true"></i>,
+        SharedTo: <i class="fas fa-lock" aria-hidden="true"></i>,
       }
     default:
       console.warn(
