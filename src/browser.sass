@@ -4,9 +4,15 @@ $theme-colour-text: #337ab7 !default
 div.rendered-axi-react-file-browser
   div.rendered-file-browser
     display: flex
-    flex-direction: row
+    flex-direction: column
   div.rendered-file-main
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+  div.rendered-file-files
     flex-grow: 1
+  div.rendered-file-details
+    margin-left: 10px
   div.action-bar
     margin-bottom: $main-padding
     flex-wrap: wrap

@@ -51,6 +51,7 @@ class BaseFile extends React.Component {
 			name: this.getName(),
 			key: this.props.fileKey,
 			extension: this.getExtension(),
+			icon: this.props.browserProps.icons[this.getFileType()] || this.props.browserProps.icons.File,	
 			//blobId: this.props.blobId,
 			//data: this.props.data,
 			//createdAt: this.props.createdAt,

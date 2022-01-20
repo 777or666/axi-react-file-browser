@@ -92,11 +92,11 @@ class RawTableFolder extends BaseFolder {
           </div>
         </td>
         <td className='shared'>
-			<div>
+			{/* <div> */}
 			<a onClick={this.handleFileClick} title={isShared ? t('main.shared') : t('main.sharedto')}>
 				{iconShared}
 			</a>
-			</div>
+			{/* </div> */}
         </td>
         <td />
         <td />

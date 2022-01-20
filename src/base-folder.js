@@ -45,6 +45,7 @@ class BaseFolder extends React.Component {
 			name: this.getName(),
 			key: this.props.fileKey,
 			extension: 'folder',
+			icon: this.props.browserProps.icons['Folder'],
 		})
 	}
 

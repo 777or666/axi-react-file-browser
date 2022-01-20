@@ -765,24 +765,26 @@ class RawFileBrowser extends React.Component {
 							activeAction: null,
 						})
 				}}>
+					{this.props.showActionBar && this.renderActionBar(selectedItems)}
 					<div className='rendered-file-main'>
-						{this.props.showActionBar && this.renderActionBar(selectedItems)}
-						{this.state.activeAction === 'delete' && this.state.selection.length > 1 &&
-							<ConfirmMultipleDeletionRenderer
-								handleDeleteSubmit={this.handleMultipleDeleteSubmit.bind(this)}
-							/>}
-						<div className="files" onClick={(event) => { event.stopPropagation() }}>
-							{renderedFiles}
+						<div className='rendered-file-files'>						
+							{this.state.activeAction === 'delete' && this.state.selection.length > 1 &&
+								<ConfirmMultipleDeletionRenderer
+									handleDeleteSubmit={this.handleMultipleDeleteSubmit.bind(this)}
+								/>}
+							<div className="files" onClick={(event) => { event.stopPropagation() }}>
+								{renderedFiles}
+							</div>
 						</div>
-					</div>
-					<div className='rendered-file-details'>
-						{this.state.previewFile !== null && (
-							<this.props.detailRenderer
-								file={this.state.previewFile}
-								close={this.closeDetail}
-								{...this.props.detailRendererProps}
-							/>
-						)}
+						<div className='rendered-file-details'>
+							{this.state.previewFile !== null && (
+								<this.props.detailRenderer
+									file={this.state.previewFile}
+									close={this.closeDetail}
+									{...this.props.detailRendererProps}
+								/>
+							)}
+						</div>
 					</div>
 				</div>
 				{/* {this.state.previewFile !== null && (
