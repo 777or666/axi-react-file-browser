@@ -158,6 +158,7 @@ class BaseFolder extends React.Component {
 BaseFolder.propTypes = {
     name: PropTypes.string,
     fileKey: PropTypes.string,
+	isReadonly: PropTypes.bool,
 
     newName: PropTypes.string,
     keyDerived: PropTypes.bool,
@@ -188,7 +189,8 @@ BaseFolder.propTypes = {
 }
 
 BaseFolder.defaultProps = {
-	isShared: true
+	isShared: true,
+	isReadonly: false
 }
 
 const dragSource = {

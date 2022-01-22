@@ -171,6 +171,7 @@ class RawFileBrowser extends React.Component {
 			activeAction: null,
 			actionTargets: [],
 			selection: [],
+			previewFile: null,
 		}, () => {
 			this.props.onDeleteFile(keys)
 		})		
@@ -183,6 +184,7 @@ class RawFileBrowser extends React.Component {
 				activeAction: null,
 				actionTargets: [],
 				selection: [],
+				previewFile: null,
 			}
 			if (key in prevState.openFolders) {
 				stateChanges.openFolders = { ...prevState.openFolders }
@@ -442,6 +444,7 @@ class RawFileBrowser extends React.Component {
 		} = this.props
 		const browserProps = this.getBrowserProps()
 		const selectionIsFolder = (selectedItems.length === 1 && isFolder(selectedItems[0]))
+		const selectionIsReadonly = (selectedItems.length === 1 && selectedItems[0].isReadonly)
 		let filter
 		if (canFilter) {
 			filter = (
@@ -463,19 +466,19 @@ class RawFileBrowser extends React.Component {
 				icons={icons}
 				nameFilter={this.state.nameFilter}
 
-				canCreateFolder={typeof onCreateFolder === 'function'}
+				canCreateFolder={typeof onCreateFolder === 'function' && !selectionIsReadonly}
 				onCreateFolder={this.handleActionBarAddFolderClick}
 
-				canRenameFile={typeof onRenameFile === 'function'}
+				canRenameFile={typeof onRenameFile === 'function' && !selectionIsReadonly}
 				onRenameFile={this.handleActionBarRenameClick}
 
-				canRenameFolder={typeof onRenameFolder === 'function'}
+				canRenameFolder={typeof onRenameFolder === 'function' && !selectionIsReadonly}
 				onRenameFolder={this.handleActionBarRenameClick}
 
-				canDeleteFile={typeof onDeleteFile === 'function'}
+				canDeleteFile={typeof onDeleteFile === 'function' && !selectionIsReadonly}
 				onDeleteFile={this.handleActionBarDeleteClick}
 
-				canDeleteFolder={typeof onDeleteFolder === 'function'}
+				canDeleteFolder={typeof onDeleteFolder === 'function' && !selectionIsReadonly}
 				onDeleteFolder={this.handleActionBarDeleteClick}
 
 				canDownloadFile={typeof onDownloadFile === 'function'}

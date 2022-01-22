@@ -167,6 +167,7 @@ BaseFile.propTypes = {
 	fileId: PropTypes.string,
 	blobId: PropTypes.string,
 	fileKeyIds: PropTypes.string,
+	isReadonly: PropTypes.string,
 
 	newKey: PropTypes.string,
 	isRenaming: PropTypes.bool,
@@ -193,7 +194,8 @@ BaseFile.propTypes = {
 }
 
 BaseFile.defaultProps = {
-	isShared: true
+	isShared: true,
+	isReadonly: false
 }
 
 const dragSource = {
