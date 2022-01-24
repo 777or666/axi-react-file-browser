@@ -95,11 +95,11 @@ class RawTableFile extends BaseFile {
           </div>
         </td>
         <td className='shared'>
-			<div>
-			<a onClick={this.handleFileClick} title={isShared ? t('main.shared') : t('main.sharedto')}>
-				{iconShared}
-			</a>
-			</div>
+          <div>
+          <a onClick={this.handleFileClick} title={isShared ? t('main.shared') : t('main.sharedto')}>
+            {iconShared}
+          </a>
+          </div>
         </td>
 
         <td className="size">{fileSize(size)}</td>

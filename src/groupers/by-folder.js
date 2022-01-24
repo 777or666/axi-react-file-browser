@@ -10,7 +10,7 @@ export default function(files, root) {
 
   files.map((file) => {
     if(!file) return
-    file.relativeKey = (file.newKey || file.key).substr(root.length)
+    file.relativeKey = file.newKey || file.key ? (file.newKey || file.key).substr(root.length) : ''
     let currentFolder = fileTree
     const folders = file.relativeKey.split('/')
     folders.map((folder, folderIndex) => {

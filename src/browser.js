@@ -8,6 +8,7 @@ import { DefaultDetail } from './details'
 import { DefaultFilter } from './filters'
 // default renderers
 import { TableHeader } from './headers'
+import { TableFooter } from './footers'
 import { TableFile } from './files'
 import { TableFolder } from './folders'
 import { DefaultConfirmDeletion, MultipleConfirmDeletion } from './confirmations'
@@ -611,6 +612,10 @@ class RawFileBrowser extends React.Component {
 			fileKey: '',
 			fileCount: this.props && this.props.files ? this.props.files.length : 0,
 		}
+		const footerProps = {
+			browserProps,
+			fileKey: '',
+		}
 		let renderedFiles
 
 		const files = this.getFiles()
@@ -621,6 +626,7 @@ class RawFileBrowser extends React.Component {
 			i18n.changeLanguage(browserProps.lang)
 		}
 		let header
+		let footer
 		/** @type any */
 		let contents = this.renderFiles(files, 0)
 		switch (this.props.renderStyle) {
@@ -681,9 +687,21 @@ class RawFileBrowser extends React.Component {
 					)
 				}
 
+				if (this.props.footerRenderer) {
+					footer = (
+						<tfoot>
+							<this.props.footerRenderer
+								{...footerProps}
+								{...this.props.footerRendererProps}
+							/>
+						</tfoot>
+					)
+				}
+
 				renderedFiles = (
 					<table cellSpacing="0" cellPadding="0">
 						{header}
+						{footer}
 						<tbody>
 							{contents}
 						</tbody>
@@ -843,6 +861,8 @@ RawFileBrowser.propTypes = {
 
 	headerRenderer: PropTypes.func,
 	headerRendererProps: PropTypes.object,
+	footerRenderer: PropTypes.func,
+	footerRendererProps: PropTypes.object,
 	filterRenderer: PropTypes.func,
 	filterRendererProps: PropTypes.object,
 	fileRenderer: PropTypes.func,
@@ -897,6 +917,8 @@ RawFileBrowser.defaultProps = {
 
 	headerRenderer: TableHeader,
 	headerRendererProps: {},
+	footerRenderer: TableFooter,
+	footerRendererProps: {},
 	filterRenderer: DefaultFilter,
 	filterRendererProps: {},
 	fileRenderer: TableFile,

@@ -5,6 +5,9 @@ export const TRANSLATIONS_RU = {
         size: 'Размер',
         modified: 'Дата изменения'
     },
+    footer: {
+        message: 'Перетащите файлы сюда или в папку назначения'
+    },
     filter: {
         nomatchfiles: 'Нет подходящих файлов',
         showmoreresults: 'Показать больше результатов',

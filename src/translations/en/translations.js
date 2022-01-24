@@ -5,6 +5,9 @@ export const TRANSLATIONS_EN = {
         size: 'Size',
         modified: 'Modified'
     },
+    footer: {
+        message: 'Drag files here or to a destination folder '
+    },
     filter: {
         nomatchfiles: 'No match files',
         showmoreresults: 'Show more results',
