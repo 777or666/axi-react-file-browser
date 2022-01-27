@@ -34,6 +34,9 @@ class BaseFolder extends React.Component {
 	handleFolderClick = (event) => {
 		event.stopPropagation()
 		this.props.browserProps.select(this.props.fileKey, 'folder', event.ctrlKey || event.metaKey, event.shiftKey)
+		if(this.props.browserProps.previewFile){
+			this.handleFileClick(event)
+		}
 	}
 
 	handleFileClick = (event) => {
@@ -139,7 +142,8 @@ class BaseFolder extends React.Component {
 			typeof this.props.browserProps.moveFolder === 'function' &&
 			!inAction &&
 			!this.props.isRenaming &&
-			!this.props.isDeleting
+			!this.props.isDeleting &&
+			!this.props.isReadonly
 		) {
 			render = this.props.connectDragSource(render)
 		}

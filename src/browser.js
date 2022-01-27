@@ -404,6 +404,7 @@ class RawFileBrowser extends React.Component {
 			confirmMultipleDeletionRenderer: this.props.confirmMultipleDeletionRenderer,
 			icons: this.props.icons,
 			lang: this.props.lang,
+			previewFile: this.state.previewFile,
 
 			// browser state
 			openFolders: this.state.openFolders,

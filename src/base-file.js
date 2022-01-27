@@ -63,6 +63,9 @@ class BaseFile extends React.Component {
 	handleItemClick = (event) => {
 		event.stopPropagation()
 		this.props.browserProps.select(this.props.fileKey, 'file', event.ctrlKey || event.metaKey, event.shiftKey)
+		if(this.props.browserProps.previewFile){
+			this.handleFileClick(event)
+		}
 	}
 	handleItemDoubleClick = (event) => {
 		event.stopPropagation()
@@ -146,7 +149,8 @@ class BaseFile extends React.Component {
 		if (
 			typeof this.props.browserProps.moveFile === 'function' &&
 			!inAction &&
-			!this.props.isRenaming
+			!this.props.isRenaming &&
+			!this.props.isReadonly
 		) {
 			render = this.props.connectDragSource(render)
 		}
