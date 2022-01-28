@@ -38,7 +38,7 @@
     "i18next": "^21.6.0",
     "i18next-browser-languagedetector": "^6.1.2",
     "lodash.flow": "^3.5.0",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react-dnd": "^14.0.2",
     "react-dnd-html5-backend": "^14.0",
     "react-i18next": "^11.15.0"
