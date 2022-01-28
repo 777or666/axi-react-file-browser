@@ -4,7 +4,7 @@
   "description": "Folder based file browser given a flat keyed list of objects, powered by React.",
   "main": "dist/axi-react-file-browser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "build-js": "./node_modules/.bin/webpack --mode=production",
     "build-css": "./node_modules/.bin/node-sass src/browser.sass dist/axi-react-file-browser.css",
     "build": "npm run build-js && npm run build-css",
