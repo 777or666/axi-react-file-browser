@@ -6,9 +6,7 @@ Folder based file browser given a flat keyed list of objects, powered by React.
 
 ## Installation
 
-In developing ...
-
-<!--Install the package with npm:
+Install the package with npm:
 
 ```bash
 # NPM
@@ -16,8 +14,7 @@ npm install axi-react-file-browser
 
 # Yarn
 yarn add axi-react-file-browser
-```-->
-
+```
 ## Usage
 
 ```javascript

@@ -1,82 +1,82 @@
 {
-  "name": "axi-react-file-browser",
-  "version": "0.0.3",
-  "description": "Folder based file browser given a flat keyed list of objects, powered by React.",
-  "main": "dist/axi-react-file-browser.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "build-js": "./node_modules/.bin/webpack --mode=production",
-    "build-css": "./node_modules/.bin/node-sass src/browser.sass dist/axi-react-file-browser.css",
-    "build": "npm run build-js && npm run build-css",
-    "prepublish": "npm run build",
-    "lint": "eslint src"
-  },
-  "files": [
-    "dist/**"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/777or666/axi-react-file-browser.git"
-  },
-  "keywords": [
-    "react",
-    "keyed",
-    "file",
-    "document",
-    "browser",
-    "s3"
-  ],
-  "author": "Кравец М.А., [forked from Uptick Pty Ltd]",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/777or666/axi-react-file-browser/issues"
-  },
-  "homepage": "https://github.com/777or666/axi-react-file-browser#readme",
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "date-fns": "^2.22.1",
-    "i18next": "^21.6.0",
-    "i18next-browser-languagedetector": "^6.1.2",
-    "lodash.flow": "^3.5.0",
-    "prop-types": "^15.8.1",
-    "react-dnd": "^14.0.2",
-    "react-dnd-html5-backend": "^14.0",
-    "react-i18next": "^11.15.0"
-  },
-  "peerDependencies": {
-    "react": "0.14.x || 15.x || 16.x || 17.x"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-proposal-class-properties": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
-    "@sambego/storybook-state": "^2.0.1",
-    "@storybook/react": "^6.2.9",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
-    "babel-loader": "^8.2.3",
-    "css-loader": "^6.5.1",
-    "esbuild": "^0.12.5",
-    "esbuild-loader": "^2.13.1",
-    "eslint": "^7.27.0",
-    "eslint-config-standard": "*",
-    "eslint-config-standard-react": "*",
-    "eslint-plugin-import": "*",
-    "eslint-plugin-node": "*",
-    "eslint-plugin-promise": "*",
-    "eslint-plugin-react": "*",
-    "eslint-plugin-standard": "*",
-    "font-awesome": "^4.7.0",
-    "node-sass": "^6.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass-loader": "^12.1.0",
-    "style-loader": "^3.3.1",
-    "typescript": "^4.3.2",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0",
-    "webpack-node-externals": "^1.5.4"
-  }
+	"name": "axi-react-file-browser",
+	"version": "0.0.5",
+	"description": "Folder based file browser given a flat keyed list of objects, powered by React.",
+	"main": "dist/axi-react-file-browser.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\"",
+		"build-js": "./node_modules/.bin/webpack --mode=production",
+		"build-css": "./node_modules/.bin/node-sass src/browser.sass dist/axi-react-file-browser.css",
+		"build": "npm run build-js && npm run build-css",
+		"prepublish": "npm run build",
+		"lint": "eslint src"
+	},
+	"files": [
+		"dist/**"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/777or666/axi-react-file-browser.git"
+	},
+	"keywords": [
+		"react",
+		"keyed",
+		"file",
+		"document",
+		"browser",
+		"s3"
+	],
+	"author": "Кравец М.А., [forked from Uptick Pty Ltd]",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/777or666/axi-react-file-browser/issues"
+	},
+	"homepage": "https://github.com/777or666/axi-react-file-browser#readme",
+	"dependencies": {
+		"classnames": "2.2.6",
+		"date-fns": "2.22.1",
+		"i18next": "21.6.0",
+		"i18next-browser-languagedetector": "6.1.2",
+		"lodash.flow": "3.5.0",
+		"prop-types": "15.8.1",
+		"react-dnd": "14.0.2",
+		"react-dnd-html5-backend": "14.0",
+		"react-i18next": "11.15.0"
+	},
+	"peerDependencies": {
+		"react": "0.14.x || 15.x || 16.x || 17.x"
+	},
+	"devDependencies": {
+		"@babel/core": "7.16.0",
+		"@babel/plugin-proposal-class-properties": "7.16.0",
+		"@babel/preset-env": "7.16.4",
+		"@babel/preset-react": "7.16.0",
+		"@sambego/storybook-state": "2.0.1",
+		"@storybook/react": "6.2.9",
+		"@typescript-eslint/eslint-plugin": "4.26.0",
+		"@typescript-eslint/parser": "4.26.0",
+		"babel-loader": "8.2.3",
+		"css-loader": "6.5.1",
+		"esbuild": "0.12.5",
+		"esbuild-loader": "2.13.1",
+		"eslint": "7.27.0",
+		"eslint-config-standard": "*",
+		"eslint-config-standard-react": "*",
+		"eslint-plugin-import": "*",
+		"eslint-plugin-node": "*",
+		"eslint-plugin-promise": "*",
+		"eslint-plugin-react": "*",
+		"eslint-plugin-standard": "*",
+		"font-awesome": "4.7.0",
+		"node-sass": "6.0.0",
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"sass-loader": "12.1.0",
+		"style-loader": "3.3.1",
+		"typescript": "4.3.2",
+		"webpack": "4.46.0",
+		"webpack-cli": "4.9.1",
+		"webpack-dev-server": "4.6.0",
+		"webpack-node-externals": "1.5.4"
+	}
 }
