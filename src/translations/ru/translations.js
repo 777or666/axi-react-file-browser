@@ -6,7 +6,7 @@ export const TRANSLATIONS_RU = {
         modified: 'Дата изменения'
     },
     footer: {
-        message: 'Перетащите файлы сюда или в папку назначения'
+        message: 'Кликните для выбора или перетащите файлы сюда'
     },
     filter: {
         nomatchfiles: 'Нет подходящих файлов',

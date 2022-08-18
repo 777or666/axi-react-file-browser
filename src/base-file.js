@@ -42,7 +42,6 @@ class BaseFile extends React.Component {
 
 	handleFileClick = (event) => {
 		event && event.preventDefault()
-		//console.log(this.props)
 		//event && event.stopPropagation()
 		this.props.browserProps.preview({
 			//id: this.props.id,
