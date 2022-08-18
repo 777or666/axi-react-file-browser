@@ -41,7 +41,7 @@ class RawTableFooter extends React.Component {
 	handleChangeInput(event, functionCreateFiles) {
 	  event.preventDefault()
 	  const files = [...event.target.files]
-	  functionCreateFiles(files, '')
+	  functionCreateFiles(files, this.props.fileKey)
 	}
 
 	render() {
