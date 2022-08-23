@@ -3,20 +3,20 @@ export const TRANSLATIONS_RU = {
         files: 'Файлы',
         shared: 'Доступ',
         size: 'Размер',
-        modified: 'Дата изменения'
+        modified: 'Дата изменения',
     },
     footer: {
-        message: 'Кликните для выбора или перетащите файлы сюда'
+        message: 'Кликните для выбора или перетащите файлы сюда',
     },
     filter: {
         nomatchfiles: 'Нет подходящих файлов',
         showmoreresults: 'Показать больше результатов',
-        filter: 'Фильтр файлов'
+        filter: 'Фильтр файлов',
     },
     main: {
         nofiles: 'Нет файлов',
         shared: 'Доступно всем кому доступен объект',
-        sharedto: 'Доступ ограничен'
+        sharedto: 'Доступ ограничен',
     },
     action: {
         newfolder: 'Новая папка',
@@ -26,7 +26,8 @@ export const TRANSLATIONS_RU = {
         movetext: 'Перенос ...',
         rename: 'Переименовать',
         delete: 'Удалить',
-        download: 'Скачать'        
+        download: 'Скачать',
+				downloadinfolder: 'Загрузить в папку',
     },
     detail: {
         header: 'Свойства',
@@ -35,9 +36,9 @@ export const TRANSLATIONS_RU = {
         modified: 'Изменен',
         created: 'Загружен',
         createdby: 'Загрузил',
-        close: 'Закрыть'
+        close: 'Закрыть',
     },
     confirm: {
-        delete: 'Подтвердить удаление'
+        delete: 'Подтвердить удаление',
     }
 }

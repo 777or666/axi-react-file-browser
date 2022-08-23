@@ -4,7 +4,7 @@ import ClassNames from 'classnames'
 import { DropTarget } from 'react-dnd'
 import { NativeTypes } from 'react-dnd-html5-backend'
 import { BaseFileConnectors } from './../base-file.js'
-import "../translations/i18n"
+import '../translations/i18n'
 import { t } from 'i18next'
 
 class RawTableFooter extends React.Component {
@@ -14,8 +14,6 @@ class RawTableFooter extends React.Component {
 
     this.state = {
       selectedFile: null,
-      upload: [],
-      drag: false,
     }
   }
 

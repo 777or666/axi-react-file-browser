@@ -26,7 +26,8 @@ export const TRANSLATIONS_EN = {
         movetext: 'Move ...',
         rename: 'Rename',
         delete: 'Delete',
-        download: 'Download'        
+        download: 'Download',
+				downloadinfolder: 'Download in folder',
     },
     detail: {
         header: 'Detail item',

@@ -19,6 +19,7 @@ import { isFolder } from './utils'
 import { DefaultAction } from './actions'
 import i18n from "i18next"
 import { Translation } from 'react-i18next'
+import DownloadInFolder from './folders/downloadInFolder'
 
 const SEARCH_RESULTS_PER_PAGE = 20
 const regexForNewFolderOrFileSelection = /.*\/__new__[/]?$/gm
@@ -488,12 +489,31 @@ class RawFileBrowser extends React.Component {
 
 				canDownloadFolder={typeof onDownloadFolder === 'function'}
 				onDownloadFolder={this.handleActionBarDownloadClick}
+
+				selectedFolder={this.state.selection[0]}
+			/>
+		)
+
+		const downloadFilesInFolder = (
+			<DownloadInFolder
+			browserProps={browserProps}
+			selectionIsReadonly={selectionIsReadonly}
+			isReadonlyMode={this.props.isReadonlyMode}
+
+			selectedItems={selectedItems}
+			isFolder={selectionIsFolder}
+
+			icons={icons}
+			nameFilter={this.state.nameFilter}
+
+			selectedFolder={this.state.selection[0]}
 			/>
 		)
 
 		return (
 			<div className="action-bar">
 				{filter}
+				{downloadFilesInFolder}
 				{actions}
 			</div>
 		)
@@ -782,7 +802,7 @@ class RawFileBrowser extends React.Component {
 					onClick={(event) => {
 						event.stopPropagation()
 						this.setState({
-							selection: [],
+							// selection: [], // with this selection doesn't work downloadFilesInFolder
 							actionTargets: [],
 							activeAction: null,
 						})
