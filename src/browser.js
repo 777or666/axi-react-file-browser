@@ -261,6 +261,7 @@ class RawFileBrowser extends React.Component {
 	}
 
 	preview = (file) => {
+		if (this.props.isSaveonlyMode) return
 		if (this.state.previewFile && this.state.previewFile.key !== file.key) this.closeDetail()
 
 		this.setState({
@@ -271,6 +272,7 @@ class RawFileBrowser extends React.Component {
 	}
 
 	closeDetail = () => {
+		if (this.props.isSaveonlyMode) return
 		this.setState({
 			previewFile: null,
 		}, () => {
@@ -406,7 +408,7 @@ class RawFileBrowser extends React.Component {
 			icons: this.props.icons,
 			lang: this.props.lang,
 			previewFile: this.state.previewFile,
-
+			isSaveonlyMode: this.props.isSaveonlyMode,
 			// browser state
 			openFolders: this.state.openFolders,
 			nameFilter: this.state.nameFilter,
@@ -443,13 +445,13 @@ class RawFileBrowser extends React.Component {
 			actionRenderer: ActionRenderer,
 			onCreateFolder, onRenameFile, onRenameFolder,
 			onDeleteFile, onDeleteFolder, onDownloadFile,
-			onDownloadFolder,
+			onDownloadFolder, isSaveonlyMode, 
 		} = this.props
 		const browserProps = this.getBrowserProps()
 		const selectionIsFolder = (selectedItems.length === 1 && isFolder(selectedItems[0]))
 		const selectionIsReadonly = (selectedItems.length === 1 && selectedItems[0].isReadonly)
 		let filter
-		if (canFilter) {
+		if (canFilter  && !isSaveonlyMode) {
 			filter = (
 				<FilterRenderer
 					value={this.state.nameFilter}
@@ -523,6 +525,7 @@ class RawFileBrowser extends React.Component {
 		const {
 			fileRenderer: FileRenderer, fileRendererProps,
 			folderRenderer: FolderRenderer, folderRendererProps,
+			isSaveonlyMode, onClickPreviewOpen
 		} = this.props
 		const browserProps = this.getBrowserProps()
 		let renderedFiles = []
@@ -540,6 +543,8 @@ class RawFileBrowser extends React.Component {
 						{...thisItemProps}
 						browserProps={browserProps}
 						{...fileRendererProps}
+						isSaveonlyMode={isSaveonlyMode}
+						onClickPreviewOpen={onClickPreviewOpen}
 					/>
 				)
 			} else {
@@ -916,6 +921,8 @@ RawFileBrowser.propTypes = {
 
 	onFolderOpen: PropTypes.func,
 	onFolderClose: PropTypes.func,
+
+	onClickPreviewOpen: PropTypes.func,
 }
 
 RawFileBrowser.defaultProps = {
@@ -963,6 +970,8 @@ RawFileBrowser.defaultProps = {
 
 	onFolderOpen: (folder) => { }, // Folder opened
 	onFolderClose: (folder) => { }, // Folder closed
+
+	onClickPreviewOpen: (url) => { }, // Open file in new window
 }
 class FileBrowser extends Component {
 	render() {

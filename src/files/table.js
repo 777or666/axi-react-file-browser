@@ -28,7 +28,6 @@ class RawTableFile extends BaseFile {
     const inAction = (isDragging || action)
     const iconShared = browserProps.icons[isShared ? 'Shared' : 'SharedTo']
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
-
     let name
     if (!inAction && isDeleting && browserProps.selection.length === 1) {
       name = (
@@ -41,7 +40,9 @@ class RawTableFile extends BaseFile {
           {this.getName()}
         </ConfirmDeletionRenderer>
       )
-    } else if (!inAction && isRenaming) {
+    } 
+    
+    else if (!inAction && isRenaming) {
       name = (
         <form className="renaming" onSubmit={this.handleRenameSubmit}>
           {icon}
@@ -61,7 +62,7 @@ class RawTableFile extends BaseFile {
         <a
           href={url || '#'}
           download="download"
-          onClick={this.handleFileClick}
+          onClick={(event) => this.handleFileClick(event, url)}
         >
           {icon}
           {this.getName()}

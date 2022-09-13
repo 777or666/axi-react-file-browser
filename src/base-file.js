@@ -40,9 +40,12 @@ class BaseFile extends React.Component {
 		return extensionMapping[this.getExtension()] || 'File'
 	}
 
-	handleFileClick = (event) => {
+	handleFileClick = (event, url) => {
 		event && event.preventDefault()
 		//event && event.stopPropagation()
+		if (this.props.isSaveonlyMode && url !== undefined && this.props) {
+			this.props.onClickPreviewOpen(url)
+		} else {
 		this.props.browserProps.preview({
 			//id: this.props.id,
 			//url: this.props.url,
@@ -59,6 +62,7 @@ class BaseFile extends React.Component {
 
 		})
 	}
+}
 	handleItemClick = (event) => {
 		event.stopPropagation()
 		this.props.browserProps.select(this.props.fileKey, 'file', event.ctrlKey || event.metaKey, event.shiftKey)
@@ -171,7 +175,8 @@ BaseFile.propTypes = {
 	blobId: PropTypes.string,
 	fileKeyIds: PropTypes.string,
 	isReadonly: PropTypes.string,
-
+	isSaveonlyMode: PropTypes.bool,
+	onClickPreviewOpen: PropTypes.func,
 	newKey: PropTypes.string,
 	isRenaming: PropTypes.bool,
 
